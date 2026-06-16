@@ -13,7 +13,7 @@ import nodeIcon from '../../Image/Techstack/node-js.svg';
 import nestIcon from '../../Image/Techstack/nest-service-ts.svg';
 import pgIcon from '../../Image/Techstack/postgresql-logo.svg';
 import postmanIcon from '../../Image/Techstack/postman-icon.svg';
-import cv from '../../Cv/Santosh_Rawat_CV.pdf';
+import cv from '../../Cv/Santosh_Rawat_Cv.pdf';
 
 const techRow1 = [
   { name: 'HTML5', icon: htmlIcon },
