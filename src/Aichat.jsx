@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
+// Fallback to localhost if the env var is not set
 const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
 const Avatar = ({ letter = "S", size = 32 }) => (
@@ -64,26 +65,40 @@ const FloatingChatbot = () => {
     const trimmed = input.trim();
     if (!trimmed || loading) return;
 
-    setMessages((prev) => [...prev, { role: "user", text: trimmed }]);
+    const newMessages = [...messages, { role: "user", text: trimmed }];
+    setMessages(newMessages);
     setInput("");
     setLoading(true);
 
     try {
+      // FIX: Increased timeout from 15s to 60s to handle cold-start FAISS loading
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 15000);
+      const timeoutId = setTimeout(() => controller.abort(), 60000);
+
+      // FIX: Send conversation history alongside the current message so the
+      // backend has full context even if its memory file is lost or empty.
+      const history = newMessages
+        .slice(0, -1) // exclude the message we just appended
+        .map((m) => ({ role: m.role === "ai" ? "assistant" : "user", content: m.text }));
 
       const res = await fetch(`${API_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmed }),
+        body: JSON.stringify({ message: trimmed, history }),
         signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
 
+      // FIX: Treat non-2xx responses as errors so error messages don't appear
+      // as normal AI replies
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const data = await res.json();
+
+      // FIX: Check for an explicit error field returned by the backend
+      if (data.error) throw new Error(data.error);
+
       setMessages((prev) => [...prev, { role: "ai", text: data.answer }]);
     } catch (err) {
       const isTimeout = err.name === "AbortError";
@@ -91,9 +106,10 @@ const FloatingChatbot = () => {
         ...prev,
         {
           role: "ai",
+          isError: true, // FIX: tag error messages so they can be styled differently
           text: isTimeout
-            ? "⏱ The server took too long to respond. Please try again."
-            : "⚠️ Couldn't reach the server right now. Please try again in a moment.",
+            ? "⏱ The server is taking a while — it may be loading for the first time. Please try again in a moment."
+            : `⚠️ Couldn't reach the server: ${err.message}. Please try again.`,
         },
       ]);
     } finally {
@@ -259,11 +275,18 @@ const FloatingChatbot = () => {
                         msg.role === "user"
                           ? "16px 16px 4px 16px"
                           : "16px 16px 16px 4px",
-                      background:
-                        msg.role === "user"
-                          ? "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)"
-                          : "#fff",
-                      color: msg.role === "user" ? "#fff" : "#1f2937",
+                      // FIX: Error messages get a distinct red tint so users
+                      // know it's a system error, not an AI answer
+                      background: msg.isError
+                        ? "#fff1f0"
+                        : msg.role === "user"
+                        ? "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)"
+                        : "#fff",
+                      color: msg.isError
+                        ? "#c0392b"
+                        : msg.role === "user"
+                        ? "#fff"
+                        : "#1f2937",
                       fontSize: 13,
                       lineHeight: 1.55,
                       boxShadow:
