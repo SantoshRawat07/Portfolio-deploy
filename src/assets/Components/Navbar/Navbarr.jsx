@@ -3,6 +3,15 @@ import { FaBars, FaTimes, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-ico
 import gsap from 'gsap';
 import { Link } from 'react-router-dom';
 
+
+const navLinks = [
+  { name: 'Home', path: '/#home' },
+  { name: 'Projects', path: '/#projects' },
+  { name: 'Services', path: '/#services' },
+  { name: 'Blogs', path: '/#blog' },
+  { name: 'Contact', path: '/#contact' },
+];
+
 function Navbarr({ visible = true, scrolledUp = true }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -10,14 +19,6 @@ function Navbarr({ visible = true, scrolledUp = true }) {
   const hamburgerBtnRef = useRef(null);
   const navItemsRef = useRef([]);
   const footerRef = useRef(null);
-
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/case-studies' },
-    { name: 'Services', path: '/service' },
-    { name: 'Blogs', path: '/blog' },
-  ];
-
   const openMenu = () => {
     setIsOpen(true);
   };
@@ -104,10 +105,13 @@ function Navbarr({ visible = true, scrolledUp = true }) {
         {/* Center: Nav Links (desktop only) */}
         <div className="hidden lg:flex flex-1 justify-center">
           <ul className="flex space-x-12 font-semibold">
-            <li><Link to="/" className="nav-link">Home</Link></li>
-            <li><Link to="/case-studies" className="nav-link">Projects</Link></li>
-            <li><Link to="/service" className="nav-link">Services</Link></li>
-            <li><Link to="/blog" className="nav-link">Blogs</Link></li>
+            {navLinks.map((item) => (
+              <li key={item.name}>
+                <a href={item.path} className="nav-link">
+                  {item.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -139,7 +143,7 @@ function Navbarr({ visible = true, scrolledUp = true }) {
         {/* Right: Contact Us (desktop only) */}
         <div className="hidden lg:block flex-shrink-0">
           <a
-            href="https://wa.me/"
+            href="https://wa.me/9779864926196?text=Hello%20I%20would%20like%20to%20know%20more%20about%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-black text-white pl-4 pr-2.5 py-2.5 rounded-full text-sm font-semibold transition-transform duration-200 hover:-translate-y-1 hover:-translate-x-1"
@@ -184,15 +188,15 @@ function Navbarr({ visible = true, scrolledUp = true }) {
             {/* Nav Links */}
             <div className="flex-1 flex flex-col justify-center gap-4">
               {navLinks.map((item, i) => (
-                <Link
+                <a
                   key={item.name}
-                  to={item.path}
+                  href={item.path}
                   ref={(el) => (navItemsRef.current[i] = el)}
                   onClick={closeMenu}
                   className="text-white text-3xl md:text-4xl font-extrabold uppercase tracking-wide w-fit hover:text-white/70 transition-colors"
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
             </div>
 

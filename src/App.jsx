@@ -9,6 +9,8 @@ import Services from './assets/Components/Services/service1.jsx'
 import Servicelast from './assets/Components/Services/Servicelast.jsx'
 import Testomonial from './assets/Components/Testomonial/testomonial.jsx'
 import Aichat from './Aichat.jsx';
+import Contact from './assets/Components/Section/contact.jsx';
+import Homeblog from './assets/Components/Section/homeblog.jsx';
 
 
 const App = () => {
@@ -23,7 +25,9 @@ const App = () => {
       <Services/>
       <Servicelast/>
       <Aichat/>
+      <Homeblog/>
       <Testomonial/>
+      <Contact/>
       <Footer/>
     </>
   );

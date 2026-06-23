@@ -77,30 +77,37 @@ const Testimonial = () => {
 
   return (
     <div className="p-0 m-0 w-full">
-      <div className="project mb-20 px-4 md:px-16 lg:px-32">
-        <h1 className="gsap-animate font-extrabold uppercase text-[40px] md:text-[80px] lg:text-[150px] xl:text-[200px] leading-none mt-10 mb-8 md:mb-4 lg:mb-2">
-          What our
-        </h1>
-        <div className="space-y-2 md:space-y-2 lg:space-y-1">
-          <h1 className="gsap-animate font-extrabold uppercase text-[40px] md:text-[80px] lg:text-[150px] xl:text-[200px] leading-none mt-2 mb-8 md:mb-4 lg:mb-2">
-            clients
-          </h1>
-          <h1 className="gsap-animate font-extrabold uppercase text-[40px] md:text-[80px] lg:text-[150px] xl:text-[200px] leading-none mt-2 mb-8 md:mb-4 lg:mb-2">
-            says
-          </h1>
-          <div className="space-y-2 md:space-y-2 lg:space-y-1 lg:-mb-10">
-            <p className="gsap-animate font-semibold text-[20px] md:text-[36px] lg:text-[60px]">
-              Hear our clients about their
-            </p>
-            <p className="gsap-animate font-semibold text-[20px] md:text-[36px] lg:text-[60px] lg:-mt-10">
-              success stories and experiences
-            </p>
-            <p className="gsap-animate font-semibold text-[20px] md:text-[36px] lg:text-[60px] lg:-mt-10">
-              with us.
-            </p>
-          </div>
-        </div>
-      </div>
+     <div className="project mb-10 px-4 md:px-16 lg:px-32">
+  {/* Heading */}
+  <div className="flex flex-col gap-[2px] mt-4">
+    <h1 className="gsap-animate font-extrabold uppercase text-[40px] sm:text-[60px] md:text-[90px] lg:text-[100px] leading-none">
+      What our
+    </h1>
+
+    <h1 className="gsap-animate font-extrabold uppercase text-[40px] sm:text-[60px] md:text-[90px] lg:text-[100px] leading-none">
+      clients
+    </h1>
+
+    <h1 className="gsap-animate font-extrabold uppercase text-[40px] sm:text-[60px] md:text-[90px] lg:text-[100px] leading-none">
+      say
+    </h1>
+  </div>
+
+  {/* Description */}
+  {/* <div className="flex flex-col gap-[2px] mt-4">
+    <p className="gsap-animate font-semibold text-[20px] sm:text-[28px] md:text-[40px] lg:text-[36px] leading-tight">
+      Hear our clients about their
+    </p>
+
+    <p className="gsap-animate font-semibold text-[20px] sm:text-[28px] md:text-[40px] lg:text-[36px] leading-tight">
+      success stories and experiences
+    </p>
+
+    <p className="gsap-animate font-semibold text-[20px] sm:text-[28px] md:text-[40px] lg:text-[36px] leading-tight">
+      with us.
+    </p>
+  </div> */}
+</div>
 
       <section className="w-full px-4 py-2 md:px-10 bg-white lg:-mt-[50px] md:mb-4">
         {/* Cards Grid */}

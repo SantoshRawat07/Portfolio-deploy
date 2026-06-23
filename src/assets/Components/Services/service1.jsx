@@ -41,14 +41,14 @@ const Services = () => {
     <div className="p-0 m-0 w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 w-full">
         {/* Image first on mobile (order-1), second on md+ (order-2) */}
-        <div className="order-1 md:order-2 w-full h-[400px] md:h-[690px]">
+        <div className="order-1 md:order-2 w-full h-[300px] md:h-[590px]">
           <img src={website} alt="Book" className="w-full h-full object-cover" />
         </div>
 
         {/* Text second on mobile (order-2), first on md+ (order-1) */}
         <div className="order-2 md:order-1 bg-gray-200 text-black p-6 md:p-8 flex items-center">
           <div className="max-w-xl" ref={textContainerRef}>
-            <h1 className="gsap-animate text-5xl md:text-6xl lg:text-9xl font-extrabold leading-tight uppercase">
+            <h1 className="gsap-animate text-5xl md:text-6xl lg:text-6xl font-extrabold leading-tight uppercase">
               Website<br />Design
             </h1>
             <p className="gsap-animate text-xl md:text-2xl lg:text-4xl font-medium mt-4">

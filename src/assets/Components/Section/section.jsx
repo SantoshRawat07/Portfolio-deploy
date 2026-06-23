@@ -36,17 +36,18 @@ const Section = () => {
   };
 
   return (
-    <div className="p-0 m-0 w-full">
-    <div className="project mb-20 px-4 md:px-16 lg:px-32">
-  <h1 className="font-extrabold uppercase text-[50px] md:text-[150px] lg:text-[180px] leading-none lg:mb-10 md:mb-4 text-left">
+    <div id="projects" className="p-0 m-0 w-full lg:mt-8">
+<div className="project mb-10 px-4 md:px-16 lg:px-32 lg:-ml-8">
+  <h1 className="font-extrabold uppercase text-[50px] sm:text-[80px] md:text-[120px] lg:text-[80px] leading-none mb-4 text-left">
     Projects
   </h1>
 
-  <div className="space-y-4 md:space-y-2 lg:space-y-4 mt-12 md:-mt-10">
-    <p className="font-semibold text-[22px] md:text-[50px] lg:text-[60px]">
+  <div className="flex flex-col gap-[2px]">
+    <p className="font-semibold text-[22px] sm:text-[32px] md:text-[45px] lg:text-[40px] leading-tight">
       Explore my recent projects
     </p>
-    <p className="font-semibold text-[22px] md:text-[50px] lg:text-[60px] lg:-mt-10">
+
+    <p className="font-semibold text-[22px] sm:text-[32px] md:text-[45px] lg:text-[40px] leading-tight">
       showcasing creativity, innovation.
     </p>
   </div>
@@ -56,7 +57,7 @@ const Section = () => {
       {/* 2x2 Grid Without .map */}
       <div className="grid grid-cols-1 md:grid-cols-2 w-full">
         {/* Image 1 */}
-        <div className="w-full">
+        <div className="w-full mb-4 md:mb-2 lg:mb-4">
           <a 
             href={projectLinks[0]} 
             target="_blank" 

@@ -34,11 +34,14 @@ const headingRef = useRef(null);
     <div className="bg-black text-white font-sans mb-4">
       {/* Logo */}
       <div className="text-white text-left pt-10 ml-10">
-        <h1 ref={headingRef} className="lg:text-[10rem] md:text-[5rem] md:-ml-[20px] lg:font-extrabold md:font-extrabold leading-none">
-          LET'S TALK
-          <span className="align-center lg:text-[6rem] md:text-[4rem]">©</span>
-        </h1>
-      </div>
+  <h1
+    ref={headingRef}
+    className="lg:text-[140px] md:text-[90px] md:-ml-[20px] lg:font-extrabold md:font-extrabold leading-none"
+  >
+    LET'S TALK
+    <span className="align-center lg:text-[6rem] md:text-[50px]">©</span>
+  </h1>
+</div>
 
       {/* Navigation Links */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-10 pt-10 pb-6 text-white text-base">
@@ -72,9 +75,11 @@ const headingRef = useRef(null);
       </div>
 
       {/* Copyright — sits right below the nav columns, no extra top gap */}
-      <div className="text-left px-10 pb-6">
-        <p className="text-4xl md:text-2xl">Copyright © 2026 Santosh Rawat. All rights reserved.</p>
-      </div>
+      <div className="text-left px-4 md:px-10 pb-6">
+  <p className="text-sm sm:text-base md:text-lg lg:text-xl">
+    Copyright © 2026 Santosh Rawat. All rights reserved.
+  </p>
+</div>
     </div>
   );
 };

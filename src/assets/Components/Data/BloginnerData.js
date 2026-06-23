@@ -1,9 +1,9 @@
-import first from '../../Image/a1.webp';
-import a2 from '../../Image/a2.webp';
-import a3 from '../../Image/a3.webp';
-import a4 from '../../Image/a4.webp';
-import a5 from '../../Image/a5.webp';
-import a6 from '../../Image/a6.avif';
+import first from '../../Image/webdev.jpg';
+import a2 from '../../Image/seo.jpg';
+import a3 from '../../Image/frontend.jpg';
+import a4 from '../../Image/marketing.jpg';
+import a5 from '../../Image/contentseo.jpg';
+import a6 from '../../Image/tech.jpg';
 
 const brandingData = [
   {

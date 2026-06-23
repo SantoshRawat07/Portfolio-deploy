@@ -48,7 +48,6 @@ const HeroSection = ({ setShowNavbar }) => {
   const [showTopText, setShowTopText] = useState(true);
   const [rightDone, setRightDone] = useState(false); // ← KEY STATE
 
-  // ── Wheel hijack ── (desktop split-layout only — md now stacks normally)
   useEffect(() => {
     const container = containerRef.current;
     const rightPanel = rightPanelRef.current;
@@ -83,7 +82,6 @@ const HeroSection = ({ setShowNavbar }) => {
     return () => container.removeEventListener('wheel', onWheel);
   }, []);
 
-  // ── Touch hijack ── (desktop split-layout only — md now stacks normally)
   useEffect(() => {
     const container = containerRef.current;
     const rightPanel = rightPanelRef.current;
@@ -196,7 +194,7 @@ const handleRightScroll = () => {
 
   return (
     <> 
-    <div
+    <div id = "Home" ref={containerRef}
       className={`flex flex-col lg:flex-row lg:h-screen lg:overflow-hidden bg-white z-10 relative
   ${rightDone ? 'lg:relative' : 'lg:sticky lg:top-0'}`}
       >

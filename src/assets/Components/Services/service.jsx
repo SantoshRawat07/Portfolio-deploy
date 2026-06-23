@@ -38,28 +38,30 @@ const Service = () => {
 
   return (
     <div className="p-0 m-0 w-full">
-      <div className="project mb-20 px-4 md:px-16 lg:px-32">
-        <h1 className="gsap-animate font-extrabold uppercase text-[40px] md:text-[80px] lg:text-[150px] xl:text-[200px] leading-none mt-10 mb-8 md:mb-4 lg:mb-2">
-          Services
-        </h1>
-        <div className="space-y-2 md:space-y-2 lg:space-y-1">
-          <p className="gsap-animate font-semibold text-[20px] md:text-[36px] lg:text-[60px]">
-            Discover our tailored services
-          </p>
-          <p className="gsap-animate font-semibold text-[20px] md:text-[36px] lg:text-[60px] lg:-mt-10">
-            designed to elevate your brand.
-          </p>
-        </div>
-      </div>
+   <div id="services" className="project mb-10 px-4 md:px-16 lg:px-32 lg:-ml-8">
+  <h1 className="gsap-animate font-extrabold uppercase text-[50px] sm:text-[80px] md:text-[120px] lg:text-[80px] leading-none mb-4 text-left">
+    Services
+  </h1>
+
+  <div className="flex flex-col gap-[2px]">
+    <p className="gsap-animate font-semibold text-[22px] sm:text-[32px] md:text-[45px] lg:text-[40px] leading-tight">
+      Discover our tailored services
+    </p>
+
+    <p className="gsap-animate font-semibold text-[22px] sm:text-[32px] md:text-[45px] lg:text-[40px] leading-tight">
+      designed to elevate your brand.
+    </p>
+  </div>
+</div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 w-full">
-        <div className="w-full h-[400px] md:h-[690px]">
+        <div className="w-full h-[300px] md:h-[590px]">
           <img src={book} alt="Book" className="w-full h-full object-cover" />
         </div>
 
         <div className="bg-gray-200 text-black p-6 md:p-8">
           <div className="max-w-xl" ref={textContainerRef}>
-            <h1 className="gsap-animate text-5xl md:text-6xl lg:text-9xl font-extrabold leading-tight">
+            <h1 className="gsap-animate text-5xl md:text-6xl lg:text-6xl font-extrabold leading-tight">
               BRAND<br />STRATEGY
             </h1>
             <p className="gsap-animate text-xl md:text-2xl lg:text-4xl font-medium mt-4">

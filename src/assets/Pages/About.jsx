@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import img from '../Image/profile.jpeg';
-import Teamcard from '../Components/Card/Teamcard';
 import Teamdata from '../Components/Data/Teamdata';
 import Award from '../Components/Card/Awardcard';
 import Footer from '../Components/Footer/footer';

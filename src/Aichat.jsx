@@ -253,6 +253,11 @@ function FloatingChatbot() {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
+  const handler = () => setOpen(true);
+  window.addEventListener("open-floating-chatbot", handler);
+  return () => window.removeEventListener("open-floating-chatbot", handler);
+}, []);
+  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
