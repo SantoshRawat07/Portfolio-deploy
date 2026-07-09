@@ -3,7 +3,7 @@ import './index.css';
 import Navbar from './assets/Components/Navbar/Navbarr.jsx';
 import HeroSection from './assets/Components/Herosection/Hero.jsx';
 import Footer from './assets/Components/Footer/footer.jsx'; 
-import Section from './assets/Components/Section/section.jsx';
+import Section from './assets/Components/Section/projects.jsx';
 import Service from './assets/Components/Services/service.jsx';
 import Services from './assets/Components/Services/service1.jsx'
 import Servicelast from './assets/Components/Services/Servicelast.jsx'

@@ -36,7 +36,7 @@ const headingRef = useRef(null);
       <div className="text-white text-left pt-10 ml-10">
   <h1
     ref={headingRef}
-    className="lg:text-[140px] md:text-[90px] md:-ml-[20px] lg:font-extrabold md:font-extrabold leading-none"
+    className="lg:text-[140px] md:text-[120px] md:-ml-[20px] lg:font-extrabold md:font-extrabold leading-none uppercase"
   >
     LET'S TALK
     <span className="align-center lg:text-[6rem] md:text-[50px]">©</span>

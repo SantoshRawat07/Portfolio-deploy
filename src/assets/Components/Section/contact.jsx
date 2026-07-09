@@ -277,6 +277,12 @@ const Contact = () => {
           .cw-hero h1 { font-size: clamp(38px, 6vw, 60px); letter-spacing: -1px; }
           .cw-hero .cw-sub { font-size: clamp(16px, 2.6vw, 26px); }
           .cw-services-box { margin: 0 16px 20px; min-height: 440px; }
+          .cw-talk-title {
+            font-size: clamp(56px, 8vw, 86px);
+            text-transform: uppercase !important;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+          }
         }
         .cw-left {
           background: #fff;
@@ -342,6 +348,30 @@ const Contact = () => {
           font-weight: 900;
           line-height: 1;
           margin-bottom: 10px;
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          transition: transform 0.25s ease, color 0.25s ease;
+          will-change: transform;
+        }
+        .cw-talk-title:hover {
+          color: #0ea5e9;
+          transform: translateY(-1px);
+        }
+        .cw-talk-title::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 999px;
+          background: radial-gradient(circle at center, rgba(14,165,233,0.18) 0%, rgba(14,165,233,0.06) 35%, transparent 70%);
+          transform: scale(0.4);
+          opacity: 0;
+          transition: transform 0.45s ease, opacity 0.35s ease;
+          pointer-events: none;
+        }
+        .cw-talk-title:hover::before {
+          transform: scale(1.6);
+          opacity: 1;
         }
         .cw-talk-desc {
           font-size: 13px;
@@ -433,6 +463,37 @@ const Contact = () => {
           border-radius: 16px;
           border: 1.5px solid #ebebeb;
           padding: 20px 20px 18px;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .cw-sub-card--social,
+        .cw-sub-card--contact {
+          background: #111;
+          border-color: #222;
+          color: #f5f5f5;
+        }
+        .cw-sub-card--social .cw-sub-label,
+        .cw-sub-card--contact .cw-sub-label {
+          color: rgba(255,255,255,0.65);
+        }
+        .cw-sub-card--social .cw-socials-title,
+        .cw-sub-card--contact .cw-socials-title {
+          color: #fff;
+        }
+        .cw-sub-card--social .cw-socials-desc,
+        .cw-sub-card--contact .cw-socials-desc {
+          color: rgba(255,255,255,0.72);
+        }
+        .cw-sub-card--social .cw-office-detail,
+        .cw-sub-card--contact .cw-office-detail {
+          color: rgba(255,255,255,0.82);
+        }
+        .cw-sub-card--social .cw-social-link,
+        .cw-sub-card--contact .cw-social-link {
+          color: rgba(255,255,255,0.9);
+        }
+        .cw-sub-card--social .cw-social-link:hover,
+        .cw-sub-card--contact .cw-social-link:hover {
+          color: #60a5fa;
         }
         .cw-sub-label {
           font-size: 10px;
@@ -560,7 +621,7 @@ const Contact = () => {
 
           <div className="cw-bottom-grid">
             {/* Contact Card */}
-            <div className="cw-sub-card">
+            <div className="cw-sub-card cw-sub-card--contact">
               <div className="cw-sub-label">Contact</div>
               <div className="cw-socials-title">Let's Work Together</div>
               <div className="cw-socials-desc">
@@ -585,7 +646,7 @@ const Contact = () => {
             </div>
 
             {/* Social Card */}
-           <div className="cw-sub-card">
+           <div className="cw-sub-card cw-sub-card--social">
               <div className="cw-sub-label">Connect</div>
               <div className="cw-socials-title">Socials</div>
               <div className="cw-socials-desc">

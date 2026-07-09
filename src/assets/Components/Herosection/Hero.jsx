@@ -198,15 +198,15 @@ const handleRightScroll = () => {
       className={`flex flex-col lg:flex-row lg:h-screen lg:overflow-hidden bg-white z-10 relative
   ${rightDone ? 'lg:relative' : 'lg:sticky lg:top-0'}`}
       >
-        {/* ── Image: visible on mobile, hidden on md (replaced by small avatar below), half-width sticky column on lg (desktop, unchanged) ── */}
+        {/* ── Image: full-size on mobile/tablet, half-width sticky column on desktop ── */}
 <div
   ref={imageRef}
-  className="w-full h-64 md:hidden lg:block lg:w-1/2 lg:h-full overflow-hidden bg-white"
+  className="w-full h-auto overflow-hidden bg-white md:flex md:items-center md:justify-center lg:w-1/2 lg:h-full lg:block"
 >
   <img
     src={portfolio}
     alt="Santosh Rawat"
-    className="object-contain w-full h-full"
+    className="w-full h-auto max-h-[70vh] md:max-h-[80vh] lg:mt-24 lg:h-full lg:w-full object-contain object-center"
   />
 </div>
 

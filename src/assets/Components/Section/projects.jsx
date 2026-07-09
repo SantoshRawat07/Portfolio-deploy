@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
 import foodland from '../../Image/foodlandweb.png';
 import trading from '../../Image/trading.png';
+import Everest from '../../Image/Everest.png';
+import Kayo from '../../Image/Kayo.png';
 import Homesphere from '../../Image/Homesphere.png';
 import Artist from '../../Image/artist.png';
 
@@ -32,7 +34,9 @@ const Section = () => {
     0: 'https://recipe-website-tqzk.vercel.app/',
     1: 'https://trading-dashboard-pi-ten.vercel.app/',
     2: 'https://nepakanvas-uyd8.vercel.app/',
-    3: 'https://homesphere-website.vercel.app/'
+    3: 'https://recipe-website-vqzw.vercel.app/',
+    4: 'https://kayo-animated-website.vercel.app/',
+    5: 'https://homesphere-website.vercel.app/'
   };
 
   return (
@@ -168,6 +172,58 @@ const Section = () => {
           </div>
         </div>
       </div>
+     <div className="w-full">
+          <a 
+            href={projectLinks[4]} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="relative group block overflow-hidden"
+            onMouseMove={(e) => handleMouseMove(4, e)}
+            onMouseLeave={() => handleMouseLeave(4)}
+          >
+            <img src={Kayo} alt="Kayo Website" className="w-full object-cover" />
+            <div
+              className="hidden lg:flex absolute top-1/2 left-1/2 items-center justify-center w-[50px] h-[50px] rounded-full 
+                bg-black text-white text-2xl z-30 pointer-events-none opacity-0
+                group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                transform: `translate(-50%, -50%) translate(${circleOffsets[4]?.x || 0}px, ${circleOffsets[4]?.y || 0}px)`
+              }}
+            >
+              <FiArrowUpRight />
+            </div>
+          </a>
+          <div className="flex justify-between px-4 py-4 text-lg md:text-xl font-semibold">
+            <b>Kayo Template Website</b>
+            <b>2025</b>
+          </div>
+          </div>
+          <div className="w-full">
+          <a 
+            href={projectLinks[3]} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="relative group block overflow-hidden"
+            onMouseMove={(e) => handleMouseMove(3, e)}
+            onMouseLeave={() => handleMouseLeave(3)}
+          >
+            <img src={Everest} alt="Everest travel Website" className="w-full object-cover" />
+            <div
+              className="hidden lg:flex absolute top-1/2 left-1/2 items-center justify-center w-[50px] h-[50px] rounded-full 
+                bg-black text-white text-2xl z-30 pointer-events-none opacity-0
+                group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                transform: `translate(-50%, -50%) translate(${circleOffsets[3]?.x || 0}px, ${circleOffsets[3]?.y || 0}px)`
+              }}
+            >
+              <FiArrowUpRight />
+            </div>
+          </a>
+          <div className="flex justify-between px-4 py-4 text-lg md:text-xl font-semibold">
+            <b>Everest travel Website</b>
+            <b>2025</b>
+          </div>
+          </div>
     </div>
   );
 };
