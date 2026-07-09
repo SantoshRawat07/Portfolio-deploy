@@ -4,7 +4,7 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import foodland from '../../Image/foodlandweb.png';
 import trading from '../../Image/trading.png';
 import Everest from '../../Image/Everest.png';
-import Kayo from '../../Image/Kayo.png';
+import Kayo from '../../Image/kayo.png';
 import Homesphere from '../../Image/Homesphere.png';
 import Artist from '../../Image/artist.png';
 
