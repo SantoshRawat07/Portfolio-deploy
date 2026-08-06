@@ -194,7 +194,7 @@ const handleRightScroll = () => {
 
   return (
     <> 
-    <div id = "Home" ref={containerRef}
+    <div id= "Home" ref={containerRef}
       className={`flex flex-col lg:flex-row lg:h-screen lg:overflow-hidden bg-white z-10 relative
   ${rightDone ? 'lg:relative' : 'lg:sticky lg:top-0'}`}
       >

@@ -27,8 +27,7 @@ const App = () => {
       <Aichat/>
       <Homeblog/>
       <Testomonial/>
-      <Contact/>
-      <Footer/>
+      <Contact/> 
     </>
   );
 };
