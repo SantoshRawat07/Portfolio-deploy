@@ -65,6 +65,7 @@ const NameReveal = () => {
   const wrapRef = useRef(null);
   const revealRef = useRef(null);
   const circle = useRef({ r: 0, x: 0, y: 0 });
+  const touchRevealed = useRef(false);
 
   const q = (sel) => wrapRef.current.querySelectorAll(sel);
 
@@ -157,12 +158,28 @@ const NameReveal = () => {
     });
   };
 
+  const handlePointerEnter = (e) => {
+    if (e.pointerType !== "touch") handleEnter(e);
+  };
+
+  const handlePointerLeave = (e) => {
+    if (e.pointerType !== "touch") handleLeave(e);
+  };
+
+  const handlePointerDown = (e) => {
+    if (e.pointerType !== "touch") return;
+    touchRevealed.current = !touchRevealed.current;
+    if (touchRevealed.current) handleEnter(e);
+    else handleLeave(e);
+  };
+
   return (
     <div
       ref={wrapRef}
       className="relative overflow-hidden cursor-pointer select-none border-y border-white/10"
-      onPointerEnter={handleEnter}
-      onPointerLeave={handleLeave}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onPointerDown={handlePointerDown}
       role="img"
       aria-label={NAME}
     >
@@ -407,6 +424,18 @@ const Footer = () => {
                 </a>
               </li>
             ))}
+            <li className="fade-up">
+              <a
+                href="/#contact"
+                className="group inline-flex items-center gap-1 transition-colors hover:text-[#fc7f4e]"
+              >
+                Contact
+                <ArrowUpRight
+                  size={13}
+                  className="-translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                />
+              </a>
+            </li>
           </ul>
         </div>
       </div>

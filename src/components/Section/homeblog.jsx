@@ -38,9 +38,9 @@ function Blog() {
       <div className="pt-4 border-t border-gray-300 text-center mb-10">
         <h1
           ref={headingRef}
-          className="text-[38px] sm:text-[64px] md:text-[96px] lg:text-[80px] xl:text-[110px] uppercase font-extrabold leading-none"
+          className="text-4xl md:text-5xl lg:text-7xl uppercase font-extrabold leading-none"
         >
-          Explore Our Latest Blogs
+          Explore Latest Articles
         </h1>
         <p className="font-semibold text-[14px] md:text-[20px] lg:text-[24px] lg:mt-6 mt-4 text-gray-600">
           Fresh ideas, stories and insights about latest new global from the the tech and innovations.

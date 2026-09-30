@@ -450,7 +450,7 @@ const Contact = () => {
                     Icon: Camera,
                   },
                   {
-                    href: "https://linkedin.com/in/suntosh-rc-4325a525b",
+                    href: "https://www.linkedin.com/in/suntosh-rawat-4325a525b/",
                     label: "LinkedIn",
                     Icon: Briefcase,
                   },

@@ -252,8 +252,8 @@ const ServicesAll = () => {
           <p className="left-anim text-[10px] font-bold tracking-[5px] uppercase text-gray-400 mb-3">
             What I Offer
           </p>
-          <h2 className="left-anim font-black text-[clamp(2rem,5vw,3.75rem)] uppercase leading-none tracking-tight text-gray-900">
-            Services <span className="text-gray-300">Offered</span>
+          <h2 className="left-anim font-black text-4xl md:text-5xl lg:text-7xl uppercase leading-none tracking-tight text-gray-900">
+            Services Offered
           </h2>
           <p className="left-anim mt-4 text-gray-500 text-sm md:text-base leading-relaxed max-w-xl">
             Tailored digital services designed to elevate your brand, drive growth, and create memorable experiences.

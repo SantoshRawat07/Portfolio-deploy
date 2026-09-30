@@ -209,7 +209,7 @@ const Section = () => {
         <p className="header-anim text-xs font-bold tracking-[5px] uppercase text-gray-500 mb-4">
           Selected Work
         </p>
-        <h1 className="header-anim font-black text-[clamp(3rem,10vw,8rem)] uppercase leading-none tracking-tight text-gray-900 mb-6">
+        <h1 className="header-anim font-black text-4xl md:text-5xl lg:text-7xl uppercase leading-none tracking-tight text-gray-900 mb-6">
           Projects
         </h1>
         <p className="header-anim font-medium text-lg md:text-2xl text-gray-500 max-w-2xl">

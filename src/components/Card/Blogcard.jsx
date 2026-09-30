@@ -4,7 +4,7 @@ function BlogCard({ category, title, description, image, children }) {
   return (
     <div className="w-full">
       {/* Image Block with overlay/icon slot */}
-      <div className="w-full relative group h-[400px] md:h-[400px] lg:h-[350px] overflow-hidden">
+      <div className="w-full relative group h-[400px] md:h-[260px] lg:h-[350px] overflow-hidden">
         <img src={image} alt={title} className="w-full h-full object-cover" />
         {/* Black circle injected from parent */}
         {children}

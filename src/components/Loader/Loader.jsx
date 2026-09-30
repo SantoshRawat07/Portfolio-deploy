@@ -34,8 +34,7 @@ const Loader = () => {
     >
       <h1
         ref={textRef}
-        className="text-white font-extrabold uppercase p-8 tracking-widest"
-        style={{ fontSize: '140px' }}
+        className="text-white font-extrabold uppercase p-8 tracking-widest text-5xl sm:text-7xl md:text-8xl lg:text-[140px]"
       >
         SANTOSH©
       </h1>
