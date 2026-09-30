@@ -157,19 +157,6 @@ export default function BlogInnerPage({ params }) {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="border-t border-gray-200 mx-6 md:mx-16 lg:mx-24 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div>
-          <p className="text-xs font-bold tracking-[5px] uppercase text-gray-400 mb-2">Continue Reading</p>
-          <p className="font-black text-2xl md:text-3xl text-gray-900">Explore more articles</p>
-        </div>
-        <Link
-          href="/#blog"
-          className="px-7 py-4 bg-gray-900 text-white text-xs font-bold tracking-[3px] uppercase hover:bg-gray-700 transition-colors duration-300"
-        >
-          All Blogs →
-        </Link>
-      </section>
     </main>
   );
 }
