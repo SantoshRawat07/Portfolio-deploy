@@ -37,16 +37,17 @@ const NEAR_MARGIN = 70;
 const REACT_RADIUS = 150;
 const MAX_PUSH = 9;
 
-// Both main panels share exactly the same shell + height
+// Both main panels share exactly the same shell + height (taller at md)
 const PANEL =
   "relative overflow-hidden rounded-3xl border border-stone-200 " +
   "bg-[radial-gradient(120%_80%_at_50%_0%,#ffffff_0%,#f5f5f4_70%)] " +
   "shadow-[0_1px_0_#fff_inset,0_20px_40px_-24px_rgba(28,25,23,0.18)] " +
-  "h-[340px] lg:h-[360px]";
+  "min-h-[340px] md:min-h-[400px] lg:min-h-[360px]";
 
 const PILL_BASE =
   "absolute left-0 top-0 select-none whitespace-nowrap rounded-full " +
-  "px-4 py-2 text-xs font-semibold tracking-[0.01em] will-change-transform";
+  "px-3 py-1.5 text-[11px] lg:px-4 lg:py-2 lg:text-xs " +
+  "font-semibold tracking-[0.01em] will-change-transform";
 const PILL_BLUE =
   "border border-white/20 text-white " +
   "bg-[linear-gradient(135deg,#3b82f6_0%,#1d4ed8_100%)] " +
@@ -92,13 +93,14 @@ const Contact = () => {
       });
     };
 
-    const initPositions = () => {
+    // landed = true -> place pills directly in their final resting spots
+    const initPositions = (landed = false) => {
       const bw = box.clientWidth;
       const bh = box.clientHeight;
       const sidePadding = 20;
-      const gapX = 10;
-      const floatRowHeight = 40;
-      const landRowHeight = 44;
+      const gapX = 8;
+      const floatRowHeight = 36;
+      const landRowHeight = 40;
       const bottomPadding = 20;
       const availableWidth = bw - sidePadding * 2;
 
@@ -130,22 +132,28 @@ const Contact = () => {
 
         rowItems.forEach(({ pill, w }) => {
           const i = pillRefs.current.indexOf(pill);
+          const prevRot = pillDataRef.current[i]?.rot ?? 0;
+
           pillDataRef.current[i] = {
             x,
             targetY: yLand,
             w,
             h: pill.offsetHeight,
-            rot: 0,
+            rot: prevRot,
           };
 
-          gsap.set(pill, {
-            x,
-            y: yTop,
-            rotation: (Math.random() - 0.5) * 18,
-            opacity: 1,
-          });
+          if (landed) {
+            gsap.set(pill, { x, y: yLand, rotation: prevRot, opacity: 1 });
+          } else {
+            gsap.set(pill, {
+              x,
+              y: yTop,
+              rotation: (Math.random() - 0.5) * 18,
+              opacity: 1,
+            });
+            startIdleFloat(pill, i);
+          }
 
-          startIdleFloat(pill, i);
           x += w + gapX;
         });
       });
@@ -191,7 +199,10 @@ const Contact = () => {
     };
 
     const onPointerMove = (e) => {
+      // Skip the repel effect on touch-only devices
+      if (window.matchMedia("(hover: none)").matches) return;
       if (!settledRef.current) return;
+
       const rect = box.getBoundingClientRect();
       const near =
         e.clientX > rect.left - NEAR_MARGIN &&
@@ -233,14 +244,35 @@ const Contact = () => {
       });
     };
 
-    const initTimer = setTimeout(initPositions, 80);
+    // Re-run layout after a resize / orientation change
+    const relayout = () => {
+      pillRefs.current.filter(Boolean).forEach((p) => gsap.killTweensOf(p));
+      if (hasDroppedRef.current) {
+        initPositions(true); // snap straight to landed positions
+        settledRef.current = true;
+      } else {
+        initPositions(false);
+      }
+    };
+
+    const initTimer = setTimeout(() => initPositions(false), 80);
     const dropTimer = setTimeout(dropPills, 3080);
+
+    let lastW = box.clientWidth;
+    const ro = new ResizeObserver(() => {
+      if (box.clientWidth !== lastW) {
+        lastW = box.clientWidth;
+        relayout();
+      }
+    });
+    ro.observe(box);
 
     window.addEventListener("mousemove", onPointerMove);
 
     return () => {
       clearTimeout(initTimer);
       clearTimeout(dropTimer);
+      ro.disconnect();
       window.removeEventListener("mousemove", onPointerMove);
       pillRefs.current.filter(Boolean).forEach((el) => gsap.killTweensOf(el));
     };
@@ -313,8 +345,8 @@ const Contact = () => {
             </p>
           </div>
 
-          {/* ── Two equal panels ── */}
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          {/* ── Two equal panels (side by side from md) ── */}
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {/* Panel 1: floating services */}
             <div className={PANEL} ref={boxRef}>
               <div className="pointer-events-none absolute inset-0">
@@ -335,12 +367,12 @@ const Contact = () => {
             </div>
 
             {/* Panel 2: Let's talk */}
-            <div className={`${PANEL} flex flex-col p-6 lg:p-7`}>
+            <div className={`${PANEL} flex flex-col p-6 md:p-5 lg:p-7`}>
               <div className="group mb-2 inline-block self-start">
                 <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-stone-400">
                   Direct Line
                 </div>
-                <div className="text-4xl font-black leading-none tracking-[-0.03em] transition-colors duration-200 group-hover:text-blue-600">
+                <div className="text-4xl font-black leading-none tracking-[-0.03em] transition-colors duration-200 group-hover:text-blue-600 md:text-3xl lg:text-4xl">
                   Let's talk.
                 </div>
               </div>
@@ -371,7 +403,8 @@ const Contact = () => {
                 </button>
               </div>
 
-              <div className="mt-auto flex flex-col gap-3 sm:flex-row">
+              {/* Stacked at md, side by side again at lg */}
+              <div className="mt-auto flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
                 <button
                   ref={startBtnRef}
                   onMouseMove={makeMouseMove(startBtnRef)}

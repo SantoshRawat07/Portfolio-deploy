@@ -61,9 +61,11 @@ function Blog() {
                 <div
                   className="hidden lg:flex absolute top-1/2 left-1/2 items-center justify-center w-[50px] h-[50px] rounded-full
                     bg-black text-white text-2xl z-30 pointer-events-none opacity-0
-                    group-hover:opacity-100 transition-opacity duration-300"
+                    group-hover:opacity-100 transition-opacity duration-300
+                    [transform:translate(-50%,-50%)_translate(var(--circle-x),var(--circle-y))]"
                   style={{
-                    transform: `translate(-50%, -50%) translate(${circleOffsets[index]?.x || 0}px, ${circleOffsets[index]?.y || 0}px)`,
+                    '--circle-x': `${circleOffsets[index]?.x || 0}px`,
+                    '--circle-y': `${circleOffsets[index]?.y || 0}px`,
                   }}
                 >
                   <FiArrowUpRight />
